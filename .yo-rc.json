@@ -1,0 +1,31 @@
+{
+  "generator-phovea": {
+    "type": "app",
+    "app": "supplyChain",
+    "clientOnly": true,
+    "entries": {
+      "app": "./src/index.ts"
+    },
+    "libraries": [
+      "font-awesome",
+      "bootstrap"
+    ],
+    "modules": [
+      "phovea_core",
+      "phovea_ui"
+    ],
+    "libraryAliases": {},
+    "libraryExternals": [
+      "font-awesome",
+      "bootstrap",
+      "bootstrap-sass",
+      "jquery"
+    ],
+    "ignores": [],
+    "extensions": [],
+    "name": "supply_chain",
+    "author": "cnobre",
+    "today": "Wed, 03 May 2017 17:48:48 GMT",
+    "githubAccount": "cnobre"
+  }
+}
