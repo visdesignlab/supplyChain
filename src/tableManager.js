@@ -54,27 +54,27 @@ var TableManager = (function () {
      */
     TableManager.prototype.loadData = function (graphDataSetID, tableDataSetID) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a, _b;
-            return tslib_1.__generator(this, function (_c) {
-                switch (_c.label) {
+            var _a, e_1;
+            return tslib_1.__generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        //retrieving the desired dataset by name
+                        _b.trys.push([0, 2, , 3]);
                         _a = this;
                         return [4 /*yield*/, getById(tableDataSetID)];
                     case 1:
-                        //retrieving the desired dataset by name
-                        _a.attributeTable = (_c.sent());
-                        return [4 /*yield*/, this.parseAttributeData()];
+                        _a.attributeTable = (_b.sent());
+                        return [3 /*break*/, 3];
                     case 2:
-                        _c.sent();
-                        //retrieving the desired dataset by name
-                        _b = this;
-                        return [4 /*yield*/, getById(graphDataSetID)];
-                    case 3:
-                        //retrieving the desired dataset by name
-                        _b.table = (_c.sent());
-                        // await this.parseFamilyInfo(); //this needs to come first because the setAffectedState sets default values based on the data for a selected family.
-                        return [2 /*return*/, Promise.resolve(this)];
+                        e_1 = _b.sent();
+                        console.log('error', e_1); // 30
+                        return [3 /*break*/, 3];
+                    case 3: 
+                    // await this.parseAttributeData();
+                    //
+                    // //retrieving the desired dataset by name
+                    // this.table = <ITable> await getById(graphDataSetID);
+                    // await this.parseFamilyInfo(); //this needs to come first because the setAffectedState sets default values based on the data for a selected family.
+                    return [2 /*return*/, Promise.resolve(this)];
                 }
             });
         });
@@ -479,13 +479,16 @@ var TableManager = (function () {
             var columns, colIndexAccum;
             return tslib_1.__generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.attributeTable.cols()];
+                    case 0:
+                        console.log('here');
+                        return [4 /*yield*/, this.attributeTable.cols()];
                     case 1:
                         columns = _a.sent();
                         colIndexAccum = [];
                         //populate active attribute array
                         columns.forEach(function (col, i) {
                             var type = col.desc.value.type;
+                            console.log(col.desc.value);
                             if (type !== 'idtype') {
                                 colIndexAccum.push(i); //push the index so we can get the right view
                             }

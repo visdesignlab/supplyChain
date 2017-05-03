@@ -5,7 +5,7 @@
 import {select} from 'd3-selection';
 import {HELLO_WORLD} from './language';
 
-import * as TableManager from 'sorTable/src/tableManager';
+import * as TableManager from './tableManager';
 import * as table from 'sorTable/src/attributeTable';
 
 /**
@@ -32,9 +32,9 @@ export class App {
    * Load and initialize all necessary views
    * @returns {Promise<App>}
    */
-  private build() {
+  private async build() {
 
-    // const tableManager = TableManager.create();
+    const tableManager = TableManager.create();
     // // This executes asynchronously, so you'll have to pass
     // // back a promise and resolve that before you keep going
     // // await tableManager.loadData('big-decent-clipped-38');
@@ -43,7 +43,7 @@ export class App {
     // /** =====  PUBLIC CASE ===== */
     //
     // await tableManager.loadData('TenFamiliesDescendAnon', 'TenFamiliesAttrAnon');
-    // // await tableManager.loadData('TwoFamiliesDescendAnon', 'TwoFamiliesAttrAnon');
+    await tableManager.loadData('CompanyDataLinks', 'CompanyDataCoreInfo');
     //
     //
     //

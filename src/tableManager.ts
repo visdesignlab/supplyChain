@@ -164,11 +164,18 @@ export default class TableManager {
   public async loadData(graphDataSetID: string, tableDataSetID: string) {
 
     //retrieving the desired dataset by name
-    this.attributeTable = <ITable> await getById(tableDataSetID);
-    await this.parseAttributeData();
 
-    //retrieving the desired dataset by name
-    this.table = <ITable> await getById(graphDataSetID);
+    try {
+      this.attributeTable = <ITable> await getById(tableDataSetID);
+    } catch(e) {
+      console.log('error', e); // 30
+    }
+
+
+    // await this.parseAttributeData();
+    //
+    // //retrieving the desired dataset by name
+    // this.table = <ITable> await getById(graphDataSetID);
 
     // await this.parseFamilyInfo(); //this needs to come first because the setAffectedState sets default values based on the data for a selected family.
 
@@ -531,6 +538,8 @@ export default class TableManager {
    *
    */
   public async parseAttributeData() {
+
+    console.log('here')
     const columns = await this.attributeTable.cols();
 
     const colIndexAccum = [];
@@ -538,7 +547,7 @@ export default class TableManager {
     //populate active attribute array
     columns.forEach((col, i) => {
       const type = col.desc.value.type;
-
+      console.log(col.desc.value)
       if (type !== 'idtype') {
         colIndexAccum.push(i);//push the index so we can get the right view
       }
@@ -687,6 +696,5 @@ export default class TableManager {
  * @returns {TableManager}
  */
 export function create() {
-
   return new TableManager();
 }
