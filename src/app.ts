@@ -5,6 +5,9 @@
 import {select} from 'd3-selection';
 import {HELLO_WORLD} from './language';
 
+import * as TableManager from 'sorTable/src/tableManager';
+import * as table from 'sorTable/src/attributeTable';
+
 /**
  * The main class for the App app
  */
@@ -30,7 +33,50 @@ export class App {
    * @returns {Promise<App>}
    */
   private build() {
-    this.$node.html(HELLO_WORLD);
+
+    // const tableManager = TableManager.create();
+    // // This executes asynchronously, so you'll have to pass
+    // // back a promise and resolve that before you keep going
+    // // await tableManager.loadData('big-decent-clipped-38');
+    //
+    //
+    // /** =====  PUBLIC CASE ===== */
+    //
+    // await tableManager.loadData('TenFamiliesDescendAnon', 'TenFamiliesAttrAnon');
+    // // await tableManager.loadData('TwoFamiliesDescendAnon', 'TwoFamiliesAttrAnon');
+    //
+    //
+    //
+    // /** =====  PRIVATE CASES - WORKS ONLY WITH THE RIGHT DATA LOCALLY ===== */
+    //
+    // // await tableManager.loadData('TenFamiliesDescend', 'TenFamiliesAttr');
+    // // await tableManager.loadData('AllFamiliesDescend', 'AllFamiliesAttributes');
+    // /** ============= */
+    //
+    // const attributePanel = panel.create(this.$node.select('#data_selection').node());
+    // attributePanel.init(tableManager);
+    //
+    // const graphDataObj = graphData.create(tableManager);
+    // await graphDataObj.createTree();
+    //
+    // // console.log('tree')
+    // const genealogyTree = tree.create(this.$node.select('#graph_table').node());
+    // genealogyTree.init(graphDataObj);
+    //
+    // // console.log('table')
+    // const attributeTable = table.create(this.$node.select('#graph_table').node());
+    // attributeTable.init(tableManager);
+    //
+    // const familySelectorView = familySelector.create(this.$node.select('#familySelector').node());
+    // familySelectorView.init(tableManager);
+
+
+
+
+    this.$node.select('h3').remove();
+    this.setBusy(false);
+
+
     return Promise.resolve(null);
   }
 
