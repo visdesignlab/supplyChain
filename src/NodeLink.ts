@@ -91,7 +91,7 @@ class NodeLink {
     const  width = 600;
     const height = 500;
 
-    const svg = select('#nodeLink').append('svg')
+    const svg = select('#graphTable').append('svg')
       .attr('width',width)
       .attr('height',height)
 

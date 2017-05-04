@@ -133,12 +133,13 @@ export default class TableManager {
   // private defaultCols: String[] =
   //   ['KindredID','PersonID', 'Asthma', 'Bipolar', 'sex', 'deceased', 'suicide', 'gen', 'Age', 'FirstBMI', 'AgeFirstBMI', 'race', 'cause_death', 'weapon']; //set of default cols to read in, minimizes load time for large files;
 
-  private defaultCols: String[] =
-    ['KindredID', 'RelativeID', 'sex', 'deceased', 'suicide', 'Depression','Age', 'Age1D_Depression', 'Nr.Diag_Depression', 'Bipolar', 'Age1D_Bipolar', 'Nr.Diag_Bipolar', 'MaxBMI', 'AgeMaxBMI', 'race','cause_death', 'weapon']; //set of default cols to read in, minimizes load time for large files;
+  // private defaultCols: String[] =
+  //   ['KindredID', 'RelativeID', 'sex', 'deceased', 'suicide', 'Depression','Age', 'Age1D_Depression', 'Nr.Diag_Depression', 'Bipolar', 'Age1D_Bipolar', 'Nr.Diag_Bipolar', 'MaxBMI', 'AgeMaxBMI', 'race','cause_death', 'weapon']; //set of default cols to read in, minimizes load time for large files;
 
 
+  private defaultCols: String[] = ['City', 'State', 'Address'];
 
-  public colOrder: String[]; //array that keeps track which attributes are displayed in the panel and in the table and their correct order.
+  public colOrder: String[]; // = this.defaultCols;
 
   /** Basic information about all the loaded families */
   public readonly familyInfo: IFamilyInfo[] = [];
@@ -167,15 +168,38 @@ export default class TableManager {
 
     try {
       this.attributeTable = <ITable> await getById(tableDataSetID);
+      this.tableTable = await this.attributeTable.view(range.all()); //set default view to entire table;
     } catch(e) {
-      console.log('error', e); // 30
+      console.log('error', e);
     }
 
 
-    // await this.parseAttributeData();
+    await this.parseAttributeData();
     //
     // //retrieving the desired dataset by name
-    // this.table = <ITable> await getById(graphDataSetID);
+    try {
+      this.table = <ITable> await getById(graphDataSetID);
+      this.graphTable = await this.table.view(range.all()); //set default view to entire table;
+
+      //Set default yValues
+      const companyIds = await this.graphTable.col(0).names();
+
+      const dict ={};
+      let c = 1;
+
+      companyIds.forEach((company) => {
+        if (!(company in dict)) {
+          dict[company] = [c];
+          c= c+1;
+        }
+
+      });
+
+      this.yValues = dict;
+
+    } catch (e) {
+      console.log('error', e);
+    }
 
     // await this.parseFamilyInfo(); //this needs to come first because the setAffectedState sets default values based on the data for a selected family.
 
@@ -539,7 +563,6 @@ export default class TableManager {
    */
   public async parseAttributeData() {
 
-    console.log('here')
     const columns = await this.attributeTable.cols();
 
     const colIndexAccum = [];
@@ -547,7 +570,6 @@ export default class TableManager {
     //populate active attribute array
     columns.forEach((col, i) => {
       const type = col.desc.value.type;
-      console.log(col.desc.value)
       if (type !== 'idtype') {
         colIndexAccum.push(i);//push the index so we can get the right view
       }

@@ -18,6 +18,8 @@ export class App {
 
   constructor(parent:Element) {
     this.$node = select(parent);
+
+    this.$node.append('div').attr('id', 'test');
   }
 
   /**
@@ -36,15 +38,20 @@ export class App {
   private async build() {
 
     const tableManager = TableManager.create();
+
     // // This executes asynchronously, so you'll have to pass
     // // back a promise and resolve that before you keep going
 
 
+    //Add Node Link Diagram
     const nodeLink = NodeLink.create(this.$node);
     nodeLink.init();
 
     await tableManager.loadData('CompanyDataLinks', 'CompanyDataCoreInfo');
 
+
+    const attributeTable = table.create(this.$node.select('#graphTable').node());
+    attributeTable.init(tableManager);
 
     //
     //
