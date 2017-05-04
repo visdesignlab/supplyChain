@@ -7,6 +7,7 @@ import {HELLO_WORLD} from './language';
 
 import * as TableManager from './tableManager';
 import * as table from 'sorTable/src/attributeTable';
+import * as NodeLink from './NodeLink';
 
 /**
  * The main class for the App app
@@ -37,13 +38,14 @@ export class App {
     const tableManager = TableManager.create();
     // // This executes asynchronously, so you'll have to pass
     // // back a promise and resolve that before you keep going
-    // // await tableManager.loadData('big-decent-clipped-38');
-    //
-    //
-    // /** =====  PUBLIC CASE ===== */
-    //
-    // await tableManager.loadData('TenFamiliesDescendAnon', 'TenFamiliesAttrAnon');
+
+
+    const nodeLink = NodeLink.create(this.$node);
+    nodeLink.init();
+
     await tableManager.loadData('CompanyDataLinks', 'CompanyDataCoreInfo');
+
+
     //
     //
     //
