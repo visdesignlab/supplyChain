@@ -6,3 +6,642 @@ body, html {
 th, label, strong, b, .label {
   font-weight: 500 !important;
 }
+
+$edge-color: #4f4f4d;
+$node-color: #6f7373;
+$affected-node-color: #285880;
+
+#headersDIV {
+  position:fixed;
+}
+
+.node.affected .nodeIcon{
+  fill: $affected-node-color;
+  stroke: none;
+}
+
+.node{
+  fill: #e2e2e2;
+  stroke: #a0a7a7;
+
+}
+
+.well {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 500px;
+}
+.fixed_headers {
+  font-size: 14px !important;
+  font-weight: 200;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #0e2231 !important;
+}
+
+#legend, #nodeActions{
+  //fill: #e7e7e7;
+  fill: #626262;
+  opacity:1;
+  stroke:none;
+  //stroke: #b6b6b6;
+  //stroke-width: 2px;
+}
+
+td rect{
+  fill: #636363;
+
+}
+
+.barLabel{
+  font-weight:normal;
+  font-size:18px;
+}
+
+.sparkLine{
+  fill:none;
+  stroke: #686c6c;
+  stroke-width: 2px;
+}
+.histogramLabel{
+  font-weight:bold;
+  font-size:12px;
+
+}
+
+.minValue,
+.maxValue{
+  font-weight:bold;
+  font-size:10px;
+}
+
+.sortIcon {
+  fill:#b5b7b7;
+}
+
+.duplicateLine{
+  opacity:0;
+}
+
+.duplicateIcon{
+  cursor:pointer;
+}
+
+.duplicateIcon {
+  fill: #535250;
+  //stroke:none;
+  opacity:.95;
+  stroke-width:1px;
+  stroke:#e8e8e8;
+}
+
+.duplicateIcon.hovered {
+  fill: #535250;
+  //stroke:none;
+  opacity:.95;
+  stroke-width:1px;
+  stroke: #ffc800;
+}
+
+.duplicateIcon.clicked {
+  fill: #535250;
+  //stroke:none;
+  opacity:.95;
+  stroke-width:1px;
+  stroke: #e8a30b;
+}
+
+
+.duplicateLine.hovered {
+  stroke: #ffc800;
+  stroke-width:2px;
+  opacity:.4;
+  //stroke-dasharray: 4px;
+}
+
+.duplicateLine.clicked {
+  stroke: #e8a30b;
+  stroke-width:2px;
+  opacity:.4;
+  //stroke-dasharray: 4px;
+}
+
+
+
+
+.sortIcon.sortSelected{
+  fill: #535454;
+}
+
+.meanValue{
+  fill: #b40000;
+}
+
+
+//.numBar,
+//.catBar,
+.colSummary
+{
+  fill: #5f6262;
+}
+
+.frame{
+  //fill: white;
+  //stroke:#545757;
+  stroke-width: .5px;
+  stroke:none;
+}
+
+
+text.header{
+  font-weight:bold;
+  //text-anchor: middle;
+}
+
+.quant_ellipse{
+  //stroke: #686c6c;
+  //stroke-width: 1px;
+  stroke:none;
+  opacity:.7;
+  //fill:none;
+}
+
+.cell{
+  fill: $node-color;
+}
+
+.cell .categorical.affected{
+  fill: $affected-node-color;
+}
+
+
+.idBar{
+  fill: #545757;
+}
+
+//.cell .categorical.aggregate
+
+
+.cell text{
+  fill: #484848;
+  cursor: pointer;
+}
+
+.boundary{
+  //stroke:$node-color;
+  fill:none;
+  stroke:none;
+  pointer-events: all;
+
+}
+.quant{
+  fill: #ececec
+}
+
+tr.selected{
+  background-color: rgba(255, 100, 0, 0.44) !important;
+}
+
+////tr:nth-child(even) {background-color: #f2f2f2}
+tr:hover {background-color: #f5f5f5}
+
+th{
+  height:40%;
+  background-color: #4f4f4f;
+  color: white;
+  cursor: s-resize;
+}
+
+th.des:after {
+  content: "\21E9";
+}
+
+th.aes:after {
+  content: "\21E7";
+}
+
+
+.fixed_headers {
+  width: 300px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed_headers th,
+.fixed_headers td {
+  padding: 5px;
+  text-align: left;
+}
+.fixed_headers td:nth-child(1),
+.fixed_headers th:nth-child(1) {
+  min-width: 60px;
+}
+.fixed_headers td:nth-child(2),
+.fixed_headers th:nth-child(2) {
+  min-width: 130px;
+}
+.fixed_headers td:nth-child(3),
+.fixed_headers th:nth-child(3) {
+  width: 110px;
+}
+
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 300px;
+}
+
+
+//.fixed_headers th,
+//.fixed_headers td {
+//  padding: 5px;
+//  text-align: left;
+//}
+//.fixed_headers td:nth-child(1),
+//.fixed_headers th:nth-child(1) {
+//  min-width: 60px;
+//}
+//.fixed_headers td:nth-child(2),
+//.fixed_headers th:nth-child(2) {
+//  min-width: 80px;
+//}
+//.fixed_headers td:nth-child(3),
+//.fixed_headers th:nth-child(3) {
+//  width: 80px;
+//}
+//
+//.fixed_headers td:nth-child(4),
+//.fixed_headers th:nth-child(4) {
+//  width: 80px;
+//}
+
+
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 300px;
+}
+
+
+label {
+  margin-bottom: 10px;
+}
+
+.colSummary{
+  cursor: pointer;
+}
+.line {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+
+#graph_table{
+  overflow: scroll;
+  //overflow-y: scroll;
+  //overflow-x: scroll;
+  height: 100vh;
+  width: 2000px;
+}
+
+
+#familySelector{
+  height:380px;
+  border-bottom: solid lightgray;
+}
+
+
+#yaxis{
+  opacity:.2;
+  pointer-events: none;
+}
+
+.hide{
+  opacity: .2
+}
+
+#extremes_axis text{
+  display: none
+}
+
+.axis{
+  position: absolute
+}
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+
+.axis--x .tick text{
+  font-size:16px;
+  font-weight:bold;
+}
+
+
+.hist_xscale .tick text{
+  font-size:8px;
+}
+
+.visible_axis .tick text{
+  font-size:12px;
+}
+
+//#graphDiv{
+//    overflow-x:scroll;
+//}
+
+#familySelector{
+  //overflow-x: scroll;
+}
+
+
+.nodeIcon.clicked{
+  stroke: #ff9637;
+  stroke-width: 2px;
+  /*fill:none*/
+}
+
+.nodeIcon.hovered{
+  stroke: #ffc800;
+  stroke-width:2px;
+  /*fill:none*/
+}
+
+.highlightBar{
+  //     stroke:  #ffc800;
+  stroke-width:0px;
+  fill:#ffc800
+}
+
+.aggregateBar{
+  stroke-width:0px;
+  fill: #d6d5d3;
+  opacity:.2;
+}
+
+rect.selected{
+  //     stroke:  #ff6400;
+  stroke-width:0px;
+  opacity: .2;
+  fill:#ff6400
+}
+
+.node rect,
+.node circle,
+.node .hex{
+  //stroke:$node-color;
+  //     stroke-width: 3px;
+}
+
+.couplesLine{
+  stroke:#4f4f4d;
+
+}
+/*
+.node{
+	stroke:black
+}
+*/
+
+#data_selection{
+  margin-right: 10px;
+}
+
+.cell .label{
+  fill: white;
+  //font-weight:bold;
+  font-size:12px;
+}
+
+.node .ageLineGroup rect
+{
+  stroke:none;
+}
+
+//.badge:after {
+//  content: '\A';
+//  white-space: pre;
+//}
+
+.badge{
+  border-radius:0px !important;
+  //margin-right:10px;
+}
+.phantom{
+  stroke-opacity:.2;
+  stroke-dasharray:5;
+  fill: white  !important
+}
+
+.handle{
+  fill: #f61637;
+  fill-opacity: 0.8;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.brushAxis path{
+  stroke: none;
+}
+
+.brushAxis text{
+  font-size:16px;
+}
+
+.attributeBar{
+  stroke: #464646;
+  stroke-width: 1px;
+
+}
+
+.attributeFrame{
+  stroke: #464646;
+  stroke-width: 1px;
+
+}
+
+.ageLine, .endOfTheLine{
+  fill:#9e9d9b;
+  opacity:.6;
+}
+
+
+.endOfTheLine{
+  stroke-width:1;
+  stroke:#9e9d9b
+}
+
+//.aggregate{
+// 	opacity:.2;
+//}
+
+//Hide Life Line for Aggregated and Hidden Nodes;
+.aggregated .ageLineGroup,
+.collapsed .ageLineGroup,
+.collapsed .attributeBar,
+.collapsed .attributeFrame{
+  visibility:hidden;
+}
+
+.kidGrid.collapsed,
+.collapsed .couplesLine{
+  visibility:visible;
+}
+
+//.kidGrids{
+//  fill: #fffefb;
+//}
+
+
+
+//.collapsed .backgroundBar{
+//	pointer-events: none;
+//}
+
+
+.nodeLine{
+  stroke:#282828;
+}
+
+.ageLineGroup text{
+  stroke:none;
+}
+
+.personIcon {
+  font-family: FontAwesome;
+  /*content: "\f078";*/
+  content: "\f292";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  //float: right;
+  font-size: 14px;
+}
+
+
+
+.collapsed .nodeLine{
+  stroke:#9b9a99;
+}
+
+.nodeLabel,
+.aggregateBar,
+.ageLabel,
+  //.nodeIcon,
+.ageLineGroup,
+.nodeLine,
+  //.highlightBar,
+.nodeButtonText,
+.kidGrid,
+.cell{
+  pointer-events: none;
+}
+
+
+.ageLabel{
+
+}
+
+.node:hover .male,
+.node:hover .female {
+  //opacity: 0.2;
+  //stroke:red;
+  //fill:none;
+}
+
+.selectedDIV{
+  background-color: rgba(177, 176, 174, 0.2);
+}
+
+.edges{
+  stroke:$edge-color;
+  stroke-width: 2px;
+  fill:none
+}
+.parentEdges.selected,
+.edges.selected{
+  stroke:#F16F16;
+  stroke-width: 2px;
+  opacity:.5;
+  fill:none
+}
+
+.parentEdges{
+  stroke:$edge-color;
+  //     stroke-width: 3px;
+  fill:none
+}
+
+/*.row.selected{
+  rect{
+    stroke:red;
+  }
+}*/
+
+#app{
+  display: inline-flex;
+}
+
+
+.node a{
+  visibility:hidden;
+}
+.node:hover a {
+  visibility:visible;
+}
+
+.rowLine{
+  stroke-width: 1;
+  stroke:#9e9d9b;
+  opacity:.4;
+}
+
+.slopeLine{
+  stroke-width:6;
+  stroke: #e2e2e0;
+  opacity:.5;
+  fill:none;
+  //fill: #dfdfdf
+}
+
+
+.selectedSlope{
+  stroke: #ffc800;
+  stroke-width: 8px;
+}
+
+.clickedSlope{
+  stroke: #df7813;
+  stroke-width: 8px;
+}
+
+#revertTreeOrder{
+  cursor:pointer;
+}
+
+#revertTreeOrder text,
+#treeButtons text{
+  pointer-events: none;
+}
+
+
+
+
