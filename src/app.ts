@@ -8,6 +8,9 @@ import {HELLO_WORLD} from './language';
 import * as TableManager from './tableManager';
 import * as table from 'sorTable/src/attributeTable';
 import * as NodeLink from './NodeLink';
+import * as map from './GoogleMap';
+
+declare var google;
 
 /**
  * The main class for the App app
@@ -43,15 +46,23 @@ export class App {
     // // back a promise and resolve that before you keep going
 
 
-    //Add Node Link Diagram
-    const nodeLink = NodeLink.create(this.$node);
-    nodeLink.init();
+    const mapObject = map.create(this.$node);
+
+    // mapObject.init();
+
+
 
     await tableManager.loadData('CompanyDataLinks', 'CompanyDataCoreInfo');
 
+    var geocoder = new google.maps.Geocoder();
+    map.geocodeAddress(geocoder,mapObject);
 
     const attributeTable = table.create(this.$node.select('#graphTable').node());
     attributeTable.init(tableManager);
+
+    //Add Node Link Diagram
+    const nodeLink = NodeLink.create(this.$node);
+    nodeLink.init();
 
     //
     //
