@@ -87,13 +87,20 @@ class NodeLink {
       ]
     }
 
-
     const  width = 600;
     const height = 500;
 
     const svg = select('#graphTable').append('svg')
       .attr('width',width)
       .attr('height',height)
+      .attr('transform', 'translate(-1600,-500)')
+
+    svg.append('rect')
+      .attr('width', width)
+      .attr('height',height)
+      .attr('class','nodeLinkBackground')
+      .attr('fill','white')
+      .attr('opacity',.5)
 
 
     const color = scaleOrdinal(schemeCategory20);
