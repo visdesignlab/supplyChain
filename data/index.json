@@ -4,7 +4,7 @@
       {
         "name":"Company Name",
         "value":{
-          "type":"idtype"
+          "type":"string"
         }
       },
       {
