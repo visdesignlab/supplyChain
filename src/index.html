@@ -12,7 +12,7 @@
 
   <style>
     #map {
-      height: 400px;
+      height: 500px;
       width: 100%;
     }
 
@@ -48,12 +48,15 @@
 </div>
 
 
+
+
+
 <script>
   function initMap() {
     // Styles a map in night mode.
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 40.674, lng: -73.945},
-      zoom: 12,
+      center: {lat: 40.7608, lng: -111.8910},
+      zoom: 9,
       styles: [
         {
           "elementType": "geometry",
@@ -345,10 +348,69 @@
         }
       ]
     });
+
+    function geocodeAddress(address, geocoder, resultsMap) {
+
+      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+//      var icons = {
+//        parking: {
+//          icon: iconBase + 'parking_lot_maps.png'
+
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+//          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location,
+            icon: {
+              anchor: new google.maps.Point(16, 16),
+              url: 'data:image/svg+xml;utf-8, \
+      <svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> \
+        <path fill="#5f6262" stroke="white" stroke-width="2" d="M3.5 3.5h22v22h-22z" ></path> \
+      </svg>'
+            }
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
+    var geocoder = new google.maps.Geocoder();
+
+    geocodeAddress('219 North 530 West, Ogden, UT', geocoder,map);
+    geocodeAddress('2222 N. Redwood Road, Salt Lake City, UT', geocoder,map);
+    geocodeAddress('2575 S 3270 W, Salt Lake City, UT', geocoder,map);
+    geocodeAddress('6700 W 5400 S, West Valley City, UT', geocoder,map);
+    geocodeAddress('5995 W Amelia Earhart Dr, Salt Lake City, UT', geocoder,map);
+    geocodeAddress('3835 N Fairfield Rd E, Layton, UT', geocoder,map);
+    geocodeAddress('872 Heritage Park Blvd # 100, Layton, UT', geocoder,map);
+    geocodeAddress('4956 Jordan Canal Rd, Taylorsville, UT', geocoder,map);
+    geocodeAddress('450 N. Billy Mitchell Rd., Salt Lake City, UT', geocoder,map);
+
+
+
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB42BSn5hxy34ZXrqno8lewYMAUoD2DBsE&callback=initMap"></script>
 
+<script>
+  <!---->
+//  function initMap() {
+//    var map = new google.maps.Map(document.getElementById('map'), {
+//      zoom: 8,
+//      center: {lat: -34.397, lng: 150.644}
+//    });
+//    var geocoder = new google.maps.Geocoder();
+//
+//    document.getElementById('submit').addEventListener('click', function() {
+//      geocodeAddress(geocoder, map);
+//    });
+//  }
+
+
+
+</script>
 <script>
   (function() {
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
