@@ -1,37 +1,14 @@
 supply_chain [![Phovea][phovea-image]][phovea-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 =====================
 
+This tool visualizes Utah Supply Chain data, it's currently pre-release. 
 
+## Installation 
 
-Installation
-------------
+You'll need to run it from a [phovea workspace](http://phovea.caleydo.org/contributors/cheatsheet/).
 
-```
-git clone https://github.com/cnobre/supply_chain.git
-cd supply_chain
-npm install
-```
+We will eventually make the installation more streamlined by creating a Phovea Product. 
 
-Testing
--------
-
-```
-npm test
-```
-
-Building
---------
-
-```
-npm run build
-```
-
-Launching
----------
-
-```
-npm start
-```
 
 
 ***
